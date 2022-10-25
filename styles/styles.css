@@ -34,6 +34,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 4rem;
+  padding-top: 4rem;
 }
 .form__city {
   color: rgba(0, 0, 0, 0.725);
@@ -51,10 +52,11 @@ body {
 }
 .form__button {
   color: white;
+  font-size: 1rem;
   background-color: rgba(0, 0, 0, 0.725);
   font-family: Arial, Helvetica, sans-serif;
   border: 1px solid rgb(14, 13, 13);
   border-radius: 6px;
-  padding: 0.5rem;
-  margin-top: 3rem;
+  padding: 0.5rem 1rem;
+  margin-top: 3.5rem;
 }/*# sourceMappingURL=styles.css.map */
