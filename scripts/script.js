@@ -71,3 +71,12 @@ weatherPromise.then((response) => {
 
   console.log(displayWord);
 });
+
+deepai.setApiKey('008e0e9e-5c99-41bb-a7ac-0844654e3812');
+
+(async function () {
+  let resp = await deepai.callStandardApi('fantasy-world-generator', {
+    text: 'raining',
+  });
+  console.log(resp);
+})();
