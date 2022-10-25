@@ -1,7 +1,3 @@
-const weatherPromise = axios.get(
-  'https://api.open-meteo.com/v1/forecast?latitude=49.16&longitude=-123.18&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,precipitation_sum,rain_sum,showers_sum,snowfall_sum,precipitation_hours&current_weather=true&timezone=auto&start_date=2022-10-25&end_date=2022-10-25'
-);
-
 const wmoCodes = [
   {
     code: [0],
@@ -59,20 +55,26 @@ const wmoCodes = [
 
 let displayWord = '';
 
-weatherPromise.then((response) => {
-  const weatherCode = response.data.current_weather.weathercode;
-  console.log(weatherCode);
+const getWeather = (lat, long, date) => {
+  const weatherPromise = axios.get(
+    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,precipitation_sum,rain_sum,showers_sum,snowfall_sum,precipitation_hours&current_weather=true&timezone=auto&start_date=${date}&end_date=${date}`
+  );
 
-  wmoCodes.forEach((item) => {
-    if (item.code.includes(weatherCode)) {
-      displayWord = item.description;
-    }
+  weatherPromise.then((response) => {
+    const weatherCode = response.data.current_weather.weathercode;
+
+    wmoCodes.forEach((item) => {
+      if (item.code.includes(weatherCode)) {
+        displayWord = item.description;
+      }
+    });
+
+    console.log(response.data.current_weather);
+    console.log(displayWord);
   });
+};
 
-  console.log(displayWord);
-});
-
-deepai.setApiKey('008e0e9e-5c99-41bb-a7ac-0844654e3812');
+deepai.setApiKey('quickstart-QUdJIGlzIGNvbWluZy4uLi4K');
 
 (async function () {
   let resp = await deepai.callStandardApi('fantasy-world-generator', {
@@ -80,3 +82,27 @@ deepai.setApiKey('008e0e9e-5c99-41bb-a7ac-0844654e3812');
   });
   console.log(resp);
 })();
+
+//take in user location input
+const locationInput = document.querySelector('#inputLocation');
+const form = document.querySelector('.user-input');
+let locationArr = [];
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const location = event.target.inputLocation.value;
+  const URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyAjd0SepMQhTXIzQ867kiid-4xt7JjLMKU`;
+  const latLong = axios.get(URL);
+  latLong.then((response) => {
+    locationArr = response.data;
+    const coordinates = locationArr.results[0].geometry.location;
+    const lat = coordinates.lat;
+    const lng = coordinates.lng;
+    const day = new Date().getDate();
+    const month = new Date().getMonth() + 1;
+    const year = new Date().getFullYear();
+    let currentDate = year + '-' + month + '-' + day;
+
+    getWeather(lat, lng, currentDate);
+  });
+});
