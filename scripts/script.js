@@ -53,6 +53,19 @@ const wmoCodes = [
   },
 ];
 
+const imgContainer = document.querySelector('.form__img-container');
+
+const getImage = (keyword) => {
+  const imagePromise = axios.get(
+    `https://api.unsplash.com/photos/random/?client_id=EznpkIFvnj4Gzxg1oi6Vxay3s7lFh5rz8m4EVXKCixg&query=${keyword}`
+  );
+  imagePromise.then((response) => {
+    imgContainer.innerHTML += `
+    <img class='form__img' src="${response.data.urls.raw}"/>
+    `;
+  });
+};
+
 let displayWord = '';
 
 const getWeather = (lat, long, date) => {
@@ -69,8 +82,11 @@ const getWeather = (lat, long, date) => {
       }
     });
 
+    getImage(displayWord);
+    imgContainer.innerHTML += `
+    <p class='temperature'>Temperature is : ${response.data.current_weather.temperature}</p>
+    `;
     console.log(response.data.current_weather);
-    console.log(displayWord);
   });
 };
 
