@@ -7,13 +7,37 @@
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./styles/styles.scss" />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
       type="text/javascript"
     ></script>
   </head>
+
   <body>
+    <main>
+      <form class="form__button" action="#">
+        <div>
+          <label class="form__city" for="city">City</label>
+          <input
+            class="form__city-box"
+            type="text"
+            id="inputLocation"
+            name="city"
+            placeholder="Enter city name..."
+          />
+        </div>
+
+        <div>
+          <input class="form__button" type="submit" value="Submit" />
+        </div>
+      </form>
+
+      <div class="form__img-container">
+        <!-- <p class=""></p> -->
+      </div>
+    </main>
+
     <script src="./scripts/script.js" async defer></script>
   </body>
 </html>

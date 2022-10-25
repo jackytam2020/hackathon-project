@@ -1,0 +1,83 @@
+// https://www.makeuseof.com/css-background-patterns-examples/
+
+body {
+  background: linear-gradient(
+    -45deg,
+    #ee765277,
+    #e47fa637,
+    #7fbdd458,
+    #23d5ab6a
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  padding-top: 4rem;
+
+  &__city {
+    color: rgba(0, 0, 0, 0.725);
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+
+    &-box {
+      background-color: rgba(249, 243, 243, 0.619);
+      width: 100%;
+      border: 1px solid rgb(64, 59, 59);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+  }
+
+  &__button {
+    color: white;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0.725);
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid rgb(14, 13, 13);
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    margin-top: 3.5rem;
+  }
+
+  &__img-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+    position: relative;
+  }
+  &__img {
+    height: 800px;
+    width: 800px;
+    object-fit: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+.temperature {
+  color: white;
+  font-size: 2rem;
+  font-family: sans-serif;
+  position: absolute;
+}
