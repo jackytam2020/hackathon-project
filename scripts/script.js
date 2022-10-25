@@ -74,18 +74,9 @@ const getWeather = (lat, long, date) => {
   });
 };
 
-deepai.setApiKey('quickstart-QUdJIGlzIGNvbWluZy4uLi4K');
-
-(async function () {
-  let resp = await deepai.callStandardApi('fantasy-world-generator', {
-    text: 'raining',
-  });
-  console.log(resp);
-})();
-
 //take in user location input
 const locationInput = document.querySelector('#inputLocation');
-const form = document.querySelector('.user-input');
+const form = document.querySelector('.form__button');
 let locationArr = [];
 
 form.addEventListener('submit', (event) => {
