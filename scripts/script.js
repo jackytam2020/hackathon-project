@@ -86,6 +86,9 @@ const getWeather = (lat, long, date) => {
     imgContainer.innerHTML += `
     <p class='temperature'>Temperature is : ${response.data.current_weather.temperature}</p>
     `;
+    imgContainer.innerHTML += `
+    <p class='description'>${displayWord}</p>
+    `;
     console.log(response.data.current_weather);
   });
 };

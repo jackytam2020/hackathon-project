@@ -76,8 +76,16 @@ body {
 }
 
 .temperature {
-  color: white;
+  color: black;
   font-size: 2rem;
   font-family: sans-serif;
   position: absolute;
+}
+
+.description {
+  color: black;
+  font-size: 2rem;
+  font-family: sans-serif;
+  position: absolute;
+  top: 50px;
 }/*# sourceMappingURL=styles.css.map */
